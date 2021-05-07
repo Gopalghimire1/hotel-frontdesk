@@ -1,0 +1,66 @@
+<div id="guest-summary">
+    <div class="title">
+        Current Guests
+    </div>
+    <div class="booking-list">
+        <table class="table">
+            <tr>
+                <th>
+                    GUEST ID
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Guests
+                </th>
+                <th>
+                    From
+                </th>
+
+                <th>
+                    Rooms
+                </th>
+                <th>
+
+                </th>
+            </tr>
+            <tr *ngFor="let reservation of reservations">
+                <td>
+                    {{reservation.unique_id}}
+                </td>
+                <td>
+                    {{reservation.name}}
+                </td>
+              <td>
+                  <span>
+
+                      {{reservation.adults}} Adult
+                  </span>
+                  <span class="ms-1" *ngIf="reservation.kids>0">
+                    ,{{reservation.kids}} Children
+                  </span>
+              </td>
+                <td>
+                    {{reservation.check_in}}
+                </td>
+                <td>
+                    <span class="room" *ngFor="let room of reservation.rooms">
+                        {{ room.title }} : {{ room.number}},
+                    </span>
+                </td>
+                <td>
+                    <button class="btn-detail" [routerLink]="['/admin/reservations/single/'+reservation.id]"  >Detail</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="p-2 text-right">
+        <button class="btn-ok mr-4" [routerLink]="['/admin/add-reservation']">
+            Add New Reservation
+        </button>
+        <button class="btn-href" [routerLink]="['/admin/guests']" >
+            View All Guests &rarr;
+        </button>
+    </div>
+</div>

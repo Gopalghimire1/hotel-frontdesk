@@ -1,0 +1,13 @@
+.guest{
+    max-width: auto;
+    margin:15px 5px;
+    padding:20px 10px;
+    border-radius:5px;
+    display: flex;
+    color:white;
+    background:var(--extra-color);
+    .active{
+        background:var(--extra1-color);
+        
+    }
+}

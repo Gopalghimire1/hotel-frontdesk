@@ -1,0 +1,89 @@
+<div class="calender">
+
+
+        <div class="calendar-left">
+            <div class="num-date">27</div>
+            <!--num-date -->
+            <div class="day">THURSDAY</div>
+            <!--day -->
+            <div class="py-2 px-4">
+
+                <div class="current-events"> 
+                    <div class="title">
+    
+                        Current Events
+                    </div>
+                    <ul class="pl-5">
+                        <li>Day 09 Daily CSS Image</li>
+                    </ul>
+                    <span class="posts">See post events</span>
+                </div>
+                <!--current-events -->
+        
+                <div class="create-event">Create an Event</div>
+                <!-- create-event -->
+                <hr class="event-line" />
+                
+            </div>
+            <!-- add-event -->
+    
+        </div>
+        <div class="calendar-base">
+    
+            <div class="year">2017</div>
+            <!-- year -->
+    
+    
+            <div class="months">
+                <span class="month-hover" *ngFor="let month of months;index as i" [ngClass]="{'month-color ': i==currentMonth}" (click)="changeMonth(i)">
+                    {{month}}
+                </span>
+              
+            </div><!-- months -->
+            <hr class="month-line" />
+    
+            <div class="days">
+                <span>
+                    SUN
+                </span>
+                <span>
+                    MON 
+                </span>
+                <span>
+                    TUE
+                </span>
+                <span>
+                    WED
+                </span>
+                <span>
+                    THU
+                </span>
+                <span>
+                    FRI
+                </span>
+                <span>
+                    SAT
+                </span>
+            </div>
+            <!-- days -->
+    
+            <div class="num-dates">
+                <span *ngFor="let day of days" [ngClass]="{'active': (day==currentdate.getDate()  && currentMonth==currentdate.getMonth())}">
+                    {{day}}
+                </span>
+            </div>
+            <!-- num-dates -->
+            <div class="event-indicator"></div>
+            <!-- event-indicator -->
+            <div class="active-day"></div>
+            <!-- active-day -->
+            <div class="event-indicator two"></div>
+            
+            <!-- event-indicator -->
+    
+        </div>
+    
+    
+    
+</div>
+<!-- container -->

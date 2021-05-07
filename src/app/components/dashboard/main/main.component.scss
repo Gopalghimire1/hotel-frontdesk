@@ -1,0 +1,30 @@
+.section{
+    width:20%;
+    padding:10px;
+    position:relative;
+    .section-content{
+        padding-top:20px;
+        min-height:100px;
+        border-radius:5px;
+        box-shadow:0 0 10px 0 rgba(0,0,0,0.2);
+        background:white;
+        .section-title{
+            font-weight:600;
+            font-size:16px;
+            text-align:Center;
+            color:rgb(105, 105, 105);
+        }
+        .section-no{
+            font-weight:500;
+            font-size:16px;
+            text-align:Center;
+            color:rgb(104, 104, 104);
+        }
+    }
+    
+    
+}
+
+.summary{
+    padding:30px;
+}

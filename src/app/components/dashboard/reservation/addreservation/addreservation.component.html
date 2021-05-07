@@ -1,0 +1,259 @@
+<div class="add-reservation">
+    <div class="section">
+        <div class="content pt-3">
+            <input type="checkbox" [(ngModel)]="oldGuest" class="me-2"> <span class="me-3 ">Old Guest </span>
+            <input type="text" class="me-2" [(ngModel)]="guest_id" *ngIf="oldGuest" placeholder="Guest ID">
+            <span class="btn-ok" *ngIf="oldGuest">
+                Check Detail
+            </span>
+        </div>
+    </div>
+    <div class="section-wrapper">
+        <!--personal info  -->
+        <div class="section-divider">
+            <div class="section h-100">
+                <div class="title">
+                    Personal Info
+                </div>
+    
+                <div class="content">
+                    <div class="input-group-next ">
+                        <label for="">Name*</label>
+                        <input type="text" class="sm" [(ngModel)]="name">
+                    </div>
+                    <div class="input-group-next">
+                        <label for="">Phone*</label>
+                        <input type="text" class="sm"[(ngModel)]="phone">
+                    </div>
+                    <div class="input-group-next">
+                        <label for="">Email</label>
+                        <input type="email" class="sm" [(ngModel)]="email">
+                    </div>
+    
+                    <div class="input-group-next">
+                        <label for="">Address</label>
+                        <input type="text" class="sm" [(ngModel)]="address">
+                    </div>
+                    <div class="input-group-next">
+                        <label for="">Nationality</label>
+                        <input type="text" [(ngModel)]="nationality">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-divider">
+            <div class="section h-100">
+                <div class="title">
+                    Verification
+                </div>
+    
+                <div class="content">
+                    <div class="input-group-next ">
+                        <label for="">Document Type*</label>
+                        <select [(ngModel)]="doc_type">
+                            <option value="citi">CitizenShip Certificate</option>
+                            <option value="pass">Passport</option>
+                            <option value="lis">Driving Lisence</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="input-group-next ">
+                        <label for="">Verification ID Number*</label>
+                        <input type="text" [(ngModel)]="doc_no">
+                    </div>
+                    <div class="input-group-next ">
+                        <label for="">Issue Date</label>
+                        <input type="text" [(ngModel)]="issuedate">
+                    </div>
+                    <div class="input-group-next ">
+                        <label for="">Expairy Date</label>
+                        <input type="text" [(ngModel)]="expairydate" >
+                    </div>
+                    <div class="input-group-next ">
+                        <label for="">Place Of Issue</label>
+                        <input type="text" class="sm" [(ngModel)]="issue_place">
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+        <div class="section-divider">
+
+            <div class="section">
+                <div class="title">
+                    Card Detail
+                </div>
+                <div class="content">
+                    <div class="input-group-next">
+                        <label for="">Card No</label>
+                        <input type="text" [(ngModel)]="card_no">
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-6 p-0 ">
+                            <div class="input-group-next pr-1">
+                                <label for="">Exp Date</label>
+                                <input type="text" [(ngModel)]="card_expairydate">
+                            </div>
+                        </div>
+                        <div class="col-6 p-0 ">
+                            <div class="input-group-next pl-1">
+                                <label for="">CCV</label>
+                                <input type="text" [(ngModel)]="ccv">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="title">
+                    Stay Information
+                </div>
+                <div class="content">
+                    <div class="input-group-next">
+                        <label for="">Checkin Date*</label>
+                        <input type="date" [valueAsDate]="checkInDate" (change)="dateChanged($event)">
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-6 p-0 ">
+                            <div class="input-group-next pr-1">
+                                <label for="">Adults*</label>
+                                <input type="number" [(ngModel)]="adults">
+                            </div>
+                        </div>
+                        <div class="col-6 p-0 ">
+                            <div class="input-group-next pl-1">
+                                <label for="">Children*</label>
+                                <input type="number" [(ngModel)]="childrens">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section-wrapper">
+        <div class="section-divider">
+            <div class="section">
+                <div class="title">
+                    Room Detail
+                </div> 
+                <div class="content">
+                    <div class="section-wrapper">
+                        <div class="section-divider">
+                            <div class="input-group-next">
+                                <label for="">Suite</label>
+                                <select [(ngModel)]="room_type_id" (change)="roomTypeChanged()">
+                                    <option *ngFor="let roomType of roomTypes" [value]="roomType.id">{{roomType.title}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="section-divider" >
+                            <div class="input-group-next" *ngIf="currentRooms.length>0">
+                                <label for="">Room No</label>
+                                <select [(ngModel)]="room_id">
+                                    <option *ngFor="let room of currentRooms" [value]="room.id">{{room.number}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="section-divider" >
+                            <div class="input-group-next" *ngIf="currentRooms.length>0">
+                                <label for="">Price</label>
+                                <input type="text" [(ngModel)]="currentPrice" readonly>
+                            </div>
+                        </div>
+                        <!-- <div class="section-divider" >
+                            <div class="input-group-next" *ngIf="currentRooms.length>0">
+                                <label for="">Nights</label>
+                                <input type="number" [(ngModel)]="nights">
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="p-3" *ngIf="currentRooms.length<=0">
+                        <h6 style="color: #E53A3A;">No Room Left For Current Suite</h6>
+                    </div>
+                    <div class="section-wrapper" *ngIf="currentRooms.length>0">
+                        <div class="section-divider py-2">
+                            <button class="btn-ok" (click)="addOrder()">Add In List</button>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="section-wrapper">
+                        <div class="section-divider py-2">
+                            <table class="table w-100">
+                                <tr>
+                                    <th>
+                                        Suite
+                                    </th>
+                                    <th>
+                                        Room No
+                                    </th>
+                                    <th>
+                                        Price
+                                    </th>
+                                    
+                                    <th>
+
+                                    </th>
+                                </tr>
+                                <tr *ngFor="let order of orders">
+                                    <td>
+                                        {{order.room_type}}
+                                    </td>
+                                    <td>
+                                        {{order.room}}
+                                    </td>
+                                    <td>
+                                        {{order.price}} / Night
+                                    </td>
+                                   
+                                    <td>
+                                        <button class="btn-cancel px-5" (click)="delOrder(order.room_id)">Remove</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="section-wrapper">
+        <div class="section-divider">
+            <div class="section">
+                <div class="title">
+                    Paid Services
+                </div> 
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-3 pt-3" *ngFor="let paidService of paidServices" >
+                            <div class="card shadow p-0">
+                                <div class="card-title">
+                                    <img src="{{'http://hotel.gharsaaman.com/'+paidService.image}}" alt="" class="w-100">
+                                </div>
+                                <div class="card-content py-2 px-4">
+                                    <h6>
+                                        <input class="mr-1" type="checkbox" value="{{paidService.id}}" (change)="paidServiceChange($event)"> {{paidService.title}}
+                                    </h6>
+                                    <div>
+                                        {{paidService.price}} / {{paidService.price_type}}
+                                    </div>
+                                   
+                                
+                                </div>
+                                <div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+
+    <div class="section-wrapper p-2 text-right">
+        <button class="btn-ok px-3" (click)="addReservation()">Add Reservation</button>
+    </div>
+</div>

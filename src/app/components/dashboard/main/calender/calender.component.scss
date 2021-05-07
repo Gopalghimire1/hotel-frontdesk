@@ -1,0 +1,90 @@
+.calender {
+  display: flex;
+  margin: 15px 0px;
+  border-radius: 5px;
+  overflow: hidden;
+  .calendar-base {
+    height: 500px;
+    background-color: white;
+    position: relative;
+    color: black;
+    width: 65%;
+    .year {
+      color: #c7c7c7;
+      padding-top:15px;
+      font-size: 30px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .months {
+      padding: 15px;
+      color: #aaaaaa;
+      word-spacing: 10px;
+      display: flex;
+      .month-color {
+        color: #27ae60;
+        flex: 1;
+      }
+      .month-hover {
+        flex: 1;
+        cursor:pointer;
+        &:hover {
+          color: #27e879 !important;
+        }
+      }
+    }
+    .month-line {
+      border-color: #e8e8e8;
+      margin: 0px 0px 5px 0px;
+    }
+    .days {
+      color: #aaaaaa;
+      font-size: 18px;
+      word-spacing: 35px;
+      font-weight: 600;
+      display: flex;
+      span {
+        flex: 1;
+        text-align: center;
+      }
+    }
+    .num-dates {
+      display:flex;
+      flex-wrap: wrap;
+      span{
+          width:14.28%;
+          text-align:center;
+          display:inline-block;
+          padding:10px 0px;
+          &.active{
+              background:#2ecc71;
+              color:white;
+          }
+      }
+    }
+  }
+  .calendar-left {
+    width: 35%;
+    background-color: #2ecc71;
+
+    color: white;
+    flex: 1;
+    .num-date {
+        font-size: 100px;
+        text-align:center;
+      }
+      .day {
+       text-align:center;
+        font-size: 30px;
+        position: relative;
+        margin-top:-40px;
+      }
+      .current-events{
+          .title{ 
+              font-weight:600;
+          }
+      }
+  }
+}
+

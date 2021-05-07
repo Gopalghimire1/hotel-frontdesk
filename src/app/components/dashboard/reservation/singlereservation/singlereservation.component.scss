@@ -1,0 +1,30 @@
+.overlay{
+    position: fixed;
+    top:0;left:0;right:0;bottom: 0;
+    background:rgba(0,0,0,0.4);
+    padding:50px 150px;
+    .single-reservation{
+        height:100%;
+        background-color: white;
+        overflow-y: auto;
+        overflow-x: hidden;
+        .title{
+            display:flex;
+            justify-content: space-between;
+            font-weight:600;
+            font-size:17px;
+            padding:10px 20px;
+            border-bottom: 1px solid var(--secondary-color);
+            position: sticky;
+            top:0px;
+            background:rgb(255,255,255,0.95);
+            .close{
+                cursor:pointer;
+                font-weight: 700;
+            }
+        }
+        .detail{
+            padding:10px 20px;
+        }
+    }
+}

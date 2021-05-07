@@ -1,0 +1,6 @@
+<div class="guest" style="width:{{width}}px;margin-left:{{left}}px;" [routerLink]="['/single/'+data.id]" routerLinkActive="active" > 
+    {{i}}. {{data.name}} | {{data.checkindate}} | 
+    <span class="ms-1">{{data.adults}} Adults </span>
+    <span *ngIf="data.children>0" class="ms-1">,{{data.children}}</span> | 
+    <span class="ms-1">{{noOfDays}} Days</span>
+</div>
